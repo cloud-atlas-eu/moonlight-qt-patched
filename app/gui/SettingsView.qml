@@ -121,7 +121,7 @@ Flickable {
                 Label {
                     width: parent.width
                     id: resFPSdesc
-                    text: qsTr("Setting values too high for your PC or network connection may cause lag, stuttering, or errors.")
+                    text: qsTr("Setting values too high for your Maia Cloud Instance or network connection may cause lag, stuttering, or errors.")
                     font.pointSize: 9
                     wrapMode: Text.Wrap
                 }
@@ -372,8 +372,8 @@ Flickable {
 
                             ColumnLayout {
                                 Label {
-                                    text: qsTr("Custom resolutions are not officially supported by GeForce Experience, so it will not set your host display resolution. You will need to set it manually while in game.") + "\n\n" +
-                                          qsTr("Resolutions that are not supported by your client or host PC may cause streaming errors.") + "\n"
+                                    text: qsTr("Custom resolutions are not officially supported by GeForce Experience, so it will not set your host display resolution. You will need to set it manually while in app.") + "\n\n" +
+                                          qsTr("Resolutions that are not supported by your client or Maia Cloud Instance may cause streaming errors.") + "\n"
                                     wrapMode: Label.WordWrap
                                     Layout.maximumWidth: 300
                                 }
