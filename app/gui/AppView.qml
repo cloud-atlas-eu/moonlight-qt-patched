@@ -142,7 +142,7 @@ CenteredGridView {
                         launchOrResumeSelectedApp(true)
                     }
 
-                    ToolTip.text: qsTr("Resume Game")
+                    ToolTip.text: qsTr("Resume App")
                     ToolTip.delay: 1000
                     ToolTip.timeout: 3000
                     ToolTip.visible: hovered
@@ -170,7 +170,7 @@ CenteredGridView {
                         doQuitGame()
                     }
 
-                    ToolTip.text: qsTr("Quit Game")
+                    ToolTip.text: qsTr("Quit App")
                     ToolTip.delay: 1000
                     ToolTip.timeout: 3000
                     ToolTip.visible: hovered
@@ -300,12 +300,12 @@ CenteredGridView {
                 id: appContextMenu
                 NavigableMenuItem {
                     parentMenu: appContextMenu
-                    text: model.running ? qsTr("Resume Game") : qsTr("Launch Game")
+                    text: model.running ? qsTr("Resume App") : qsTr("Launch App")
                     onTriggered: launchOrResumeSelectedApp(true)
                 }
                 NavigableMenuItem {
                     parentMenu: appContextMenu
-                    text: qsTr("Quit Game")
+                    text: qsTr("Quit App")
                     onTriggered: doQuitGame()
                     visible: model.running
                 }
@@ -326,11 +326,11 @@ CenteredGridView {
                     parentMenu: appContextMenu
                     checkable: true
                     checked: model.hidden
-                    text: qsTr("Hide Game")
+                    text: qsTr("Hide App")
                     onTriggered: appModel.setAppHidden(model.index, !model.hidden)
                     enabled: model.hidden || (!model.running && !model.directLaunch)
 
-                    ToolTip.text: qsTr("Hide this game from the app grid. To access hidden games, right-click on the host and choose %1.").arg(qsTr("View All Apps"))
+                    ToolTip.text: qsTr("Hide this app from the grid. To access hidden apps, right-click on the host and choose %1.").arg(qsTr("View All Apps"))
                     ToolTip.delay: 1000
                     ToolTip.timeout: 5000
                     ToolTip.visible: hovered

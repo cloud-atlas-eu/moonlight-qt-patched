@@ -18,7 +18,7 @@ CenteredGridView {
     topMargin: 20
     bottomMargin: 5
     cellWidth: 310; cellHeight: 330;
-    objectName: qsTr("Computers")
+    objectName: qsTr("Maia Cloud Instances")
 
     Component.onCompleted: {
         // Don't show any highlighted item until interacting with them.
@@ -65,10 +65,10 @@ CenteredGridView {
     function addComplete(success, detectedPortBlocking)
     {
         if (!success) {
-            errorDialog.text = qsTr("Unable to connect to the specified PC.")
+            errorDialog.text = qsTr("Unable to connect to the specified Maia Cloud Instance.")
 
             if (detectedPortBlocking) {
-                errorDialog.text += "\n\n" + qsTr("This PC's Internet connection is blocking Moonlight. Streaming over the Internet may not work while connected to this network.")
+                errorDialog.text += "\n\n" + qsTr("Your current Internet connection is blocking Moonlight. Streaming over the Internet may not work while connected to this network.")
             }
             else {
                 errorDialog.helpText = qsTr("Click the Help button for possible solutions.")
@@ -100,8 +100,8 @@ CenteredGridView {
         Label {
             height: searchSpinner.height
             elide: Label.ElideRight
-            text: StreamingPreferences.enableMdns ? qsTr("Searching for compatible hosts on your local network...")
-                                                  : qsTr("Automatic PC discovery is disabled. Add your PC manually.")
+            text: StreamingPreferences.enableMdns ? qsTr("Searching for compatible Maia Cloud Instances on your local network...")
+                                                  : qsTr("Automatic Maia Cloud Instance discovery is disabled. Add your Maia Cloud Instance manually.")
             font.pointSize: 20
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.Wrap
@@ -169,7 +169,7 @@ CenteredGridView {
             sourceComponent: NavigableMenu {
                 id: pcContextMenu
                 MenuItem {
-                    text: qsTr("PC Status: %1").arg(model.online ? qsTr("Online") : qsTr("Offline"))
+                    text: qsTr("Maia Status: %1").arg(model.online ? qsTr("Online") : qsTr("Offline"))
                     font.bold: true
                     enabled: false
                 }
@@ -185,7 +185,7 @@ CenteredGridView {
                 }
                 NavigableMenuItem {
                     parentMenu: pcContextMenu
-                    text: qsTr("Wake PC")
+                    text: qsTr("Wake Maia Cloud Instance")
                     onTriggered: computerModel.wakeComputer(index)
                     visible: !model.online && model.wakeable
                 }
@@ -200,7 +200,7 @@ CenteredGridView {
 
                 NavigableMenuItem {
                     parentMenu: pcContextMenu
-                    text: qsTr("Rename PC")
+                    text: qsTr("Rename Maia Cloud Instance")
                     onTriggered: {
                         renamePcDialog.pcIndex = index
                         renamePcDialog.originalName = model.name
@@ -209,7 +209,7 @@ CenteredGridView {
                 }
                 NavigableMenuItem {
                     parentMenu: pcContextMenu
-                    text: qsTr("Delete PC")
+                    text: qsTr("Delete Maia Cloud Instance")
                     onTriggered: {
                         deletePcDialog.pcIndex = index
                         deletePcDialog.pcName = model.name
@@ -306,8 +306,8 @@ CenteredGridView {
 
         // don't allow edits to the rest of the window while open
         property string pin : "0000"
-        text:qsTr("Please enter %1 on your host PC. This dialog will close when pairing is completed.").arg(pin)+"\n\n"+
-             qsTr("If your host PC is running Sunshine, navigate to the Sunshine web UI to enter the PIN.")
+        text:qsTr("Please enter %1 on your Maia Cloud Instance. This dialog will close when pairing is completed.").arg(pin)+"\n\n"+
+             qsTr("If your Maia Cloud Instance is running Sunshine, navigate to the Sunshine web UI to enter the PIN.")
         standardButtons: Dialog.Cancel
         onRejected: {
             // FIXME: We should interrupt pairing here
@@ -340,15 +340,15 @@ CenteredGridView {
         function connectionTestComplete(result, blockedPorts)
         {
             if (result === -1) {
-                text = qsTr("The network test could not be performed because none of Moonlight's connection testing servers were reachable from this PC. Check your Internet connection or try again later.")
+                text = qsTr("The network test could not be performed because none of Moonlight's connection testing servers were reachable from this Maia Cloud Instance. Check your Internet connection or try again later.")
                 imageSrc = "qrc:/res/baseline-warning-24px.svg"
             }
             else if (result === 0) {
-                text = qsTr("This network does not appear to be blocking Moonlight. If you still have trouble connecting, check your PC's firewall settings.") + "\n\n" + qsTr("If you are trying to stream over the Internet, install the Moonlight Internet Hosting Tool on your gaming PC and run the included Internet Streaming Tester to check your gaming PC's Internet connection.")
+                text = qsTr("This network does not appear to be blocking Moonlight. If you still have trouble connecting, check your Maia Cloud Instance firewall settings.") + "\n\n" + qsTr("If you are trying to stream over the Internet, install the Moonlight Internet Hosting Tool on your Maia Cloud Instance and run the included Internet Streaming Tester to check your Maia Cloud Instance's Internet connection.")
                 imageSrc = "qrc:/res/baseline-check_circle_outline-24px.svg"
             }
             else {
-                text = qsTr("Your PC's current network connection seems to be blocking Moonlight. Streaming over the Internet may not work while connected to this network.") + "\n\n" + qsTr("The following network ports were blocked:") + "\n"
+                text = qsTr("Your Maia Cloud Instance's current network connection seems to be blocking Moonlight. Streaming over the Internet may not work while connected to this network.") + "\n\n" + qsTr("The following network ports were blocked:") + "\n"
                 text += blockedPorts
                 imageSrc = "qrc:/res/baseline-error_outline-24px.svg"
             }

@@ -6,7 +6,7 @@ import SdlGamepadKeyNavigation 1.0
 
 Item {
     function onSearchingComputer() {
-        stageLabel.text = qsTr("Establishing connection to PC...")
+        stageLabel.text = qsTr("Establishing connection to Maia Cloud...")
     }
 
     function onPairing(pcName, pin) {
